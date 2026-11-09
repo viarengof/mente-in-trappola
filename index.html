@@ -55,3 +55,4 @@ function end(){if(!active)return;active=false;clearInterval(interval);const poin
 async function share(){const txt='🧠 MENTE IN TRAPPOLA\nSfida '+localDate()+'\n'+results.map(x=>x?'🟩':'🟥').join('')+'\n'+correct+'/5 • '+(correct*100+left*5)+' punti\nRiesci a battermi?';try{if(navigator.share){await navigator.share({title:'Mente in Trappola',text:txt});return}if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(txt);$('share').textContent='✓ Risultato copiato!';return}}catch(e){if(e.name==='AbortError')return}window.prompt('Copia il risultato:',txt)}
 $('start').addEventListener('click',start);$('next').addEventListener('click',next);$('retry').addEventListener('click',start);$('back').addEventListener('click',()=>{show('home');updateHome()});$('share').addEventListener('click',share);document.addEventListener('visibilitychange',()=>{if(document.hidden&&active){clearInterval(interval);end()}});updateHome();
 </script></body></html>
+
